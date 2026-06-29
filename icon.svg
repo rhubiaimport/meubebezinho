@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Meu Bebê">
+  <defs>
+    <linearGradient id="bg" x1="90" y1="48" x2="420" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CFEAFF"/>
+      <stop offset=".55" stop-color="#EAF7FF"/>
+      <stop offset="1" stop-color="#FFF2F7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#6E9FF7" flood-opacity=".24"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+  <circle cx="112" cy="112" r="38" fill="#FFFFFF" opacity=".72"/>
+  <circle cx="395" cy="120" r="44" fill="#FFF5C9" opacity=".8"/>
+  <circle cx="426" cy="348" r="58" fill="#FFFFFF" opacity=".58"/>
+  <path d="M126 375c22-45 68-74 130-74s108 29 130 74c-26 36-72 59-130 59s-104-23-130-59Z" fill="#fff" filter="url(#shadow)"/>
+  <circle cx="256" cy="228" r="112" fill="#FFFFFF" filter="url(#shadow)"/>
+  <circle cx="178" cy="194" r="38" fill="#FFFFFF"/>
+  <circle cx="334" cy="194" r="38" fill="#FFFFFF"/>
+  <circle cx="218" cy="230" r="13" fill="#27364A"/>
+  <circle cx="294" cy="230" r="13" fill="#27364A"/>
+  <path d="M239 273c10 10 24 15 37 0" fill="none" stroke="#27364A" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="196" cy="266" r="18" fill="#F7B4C3" opacity=".72"/>
+  <circle cx="316" cy="266" r="18" fill="#F7B4C3" opacity=".72"/>
+  <path d="M138 122 149 145 174 148 156 165 161 190 138 178 115 190 120 165 102 148 127 145Z" fill="#F8D970"/>
+  <path d="M372 308c24-2 42 10 51 31-28-8-50-1-67 19 1-22 6-39 16-50Z" fill="#9EC5FF" opacity=".82"/>
+</svg>

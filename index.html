@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5fbff">
+  <meta name="description" content="Aplicativo simples para acompanhar a rotina do bebê.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Meu Bebê">
+  <meta name="apple-mobile-web-app-title" content="Meu Bebê">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Meu Bebê</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow" id="greeting">Bom dia</p>
+        <h1 id="page-title">Meu Bebê <span>♡</span></h1>
+      </div>
+      <button class="avatar" data-go="perfil" aria-label="Abrir perfil">👶</button>
+    </header>
+
+    <main>
+      <section class="page active" id="inicio">
+        <div class="hero">
+          <div><p class="eyebrow">NOSSO PEQUENO MUNDO</p><h2 id="hero-name">Olá, mamãe!</h2><p id="hero-age">Adicione os dados do bebê no perfil</p></div>
+          <div class="hero-bubble baby-photo"><img src="assets/bebe-inicio.jpeg" alt="Bebê dormindo em uma nuvem"></div>
+        </div>
+        <div class="dashboard-grid">
+          <article class="card baby-card span-2"><div class="card-head"><span class="icon lavender">👶</span><h3>Dados do bebê</h3><button class="link-btn" data-go="perfil">Editar</button></div><div class="baby-stats"><div><strong id="dash-weight">—</strong><small>Peso</small></div><div><strong id="dash-height">—</strong><small>Tamanho</small></div><div><strong id="dash-birth">—</strong><small>Nascimento</small></div></div></article>
+          <article class="card accent-blue" data-go="mamadas"><div class="card-head"><span class="icon blue">🍼</span><h3>Mamada</h3></div><p class="label">Próxima</p><strong class="big" id="dash-feed-next">—</strong><p class="countdown" id="dash-feed-count">Nenhuma registrada</p><p class="muted" id="dash-feed-last">Última: —</p></article>
+          <article class="card" data-go="leite"><div class="card-head"><span class="icon peach">🤱</span><h3>Tirar leite</h3></div><p class="label">Última coleta</p><strong class="big" id="dash-milk">—</strong><p class="muted" id="dash-milk-room">Ambiente: —</p></article>
+          <article class="card mini" data-go="coco"><span class="icon yellow">💩</span><div><p class="label">Cocôs hoje</p><strong id="dash-poop">0</strong></div></article>
+          <article class="card mini" data-go="coco"><span class="icon blue">💧</span><div><p class="label">Xixis hoje</p><strong id="dash-pee">0</strong></div></article>
+          <article class="card span-2 medicine-summary" data-go="remedios"><div class="card-head"><span class="icon pink">💊</span><h3>Próximo remédio</h3><span id="med-status" class="status">Em dia</span></div><strong id="dash-med">Nenhum agendado</strong><p class="muted" id="dash-med-time">Cadastre uma dose para acompanhar</p></article>
+        </div>
+      </section>
+
+      <section class="page" id="mamadas">
+        <div class="section-intro"><span class="section-emoji">🍼</span><div><h2>Mamadas</h2><p>Registre e acompanhe o próximo horário.</p></div></div>
+        <form class="card form-card" id="feed-form"><label>Hora da mamada<input type="time" id="feed-time" required></label><fieldset><legend>Intervalo</legend><div class="segmented"><label><input type="radio" name="feedInterval" value="2"><span>2 horas</span></label><label><input type="radio" name="feedInterval" value="3" checked><span>3 horas</span></label><label><input type="radio" name="feedInterval" value="4"><span>4 horas</span></label></div></fieldset><button class="primary" type="submit">Salvar mamada</button><button class="secondary" type="button" id="feed-now">🍼 Mamou agora</button></form>
+        <div class="next-card"><p>PRÓXIMA MAMADA</p><strong id="feed-next">—</strong><span id="feed-countdown">Registre uma mamada</span></div>
+        <div class="section-title"><h3>Histórico</h3><button class="text-danger" data-clear="feeds">Limpar</button></div><div id="feed-history" class="history"></div>
+      </section>
+
+      <section class="page" id="leite">
+        <div class="section-intro"><span class="section-emoji">🤱</span><div><h2>Tirar leite</h2><p>Controle simples da coleta e conservação.</p></div></div>
+        <form class="card form-card" id="milk-form"><div class="two-cols"><label>Terminou às<input type="time" id="milk-time" required></label><label>Quantidade (ml)<input type="number" id="milk-amount" min="1" step="1" placeholder="Ex: 120" required></label></div><button class="primary" type="submit">Salvar coleta</button></form>
+        <div id="milk-result" class="storage-grid empty-state"><p>Nenhuma coleta registrada.</p></div>
+        <div class="section-title"><h3>Histórico</h3><button class="text-danger" data-clear="milk">Limpar</button></div><div id="milk-history" class="history"></div>
+      </section>
+
+      <section class="page" id="coco">
+        <div class="section-intro"><span class="section-emoji">💩</span><div><h2>Fraldinhas</h2><p>Cocô e xixi, sem complicação.</p></div></div>
+        <div class="counter-pair"><div><span>💩</span><strong id="poop-today">0</strong><small>Cocôs hoje</small></div><div><span>💧</span><strong id="pee-today">0</strong><small>Xixis hoje</small></div></div>
+        <button class="pee-button" id="pee-now">💧 Fez xixi</button>
+        <form class="card form-card" id="poop-form"><h3>Registrar cocô</h3><div class="two-cols"><label>Data<input type="date" id="poop-date" required></label><label>Hora<input type="time" id="poop-time" required></label></div><label>Observação (opcional)<input type="text" id="poop-note" maxlength="80" placeholder="Ex: Normal, mais líquido..."></label><button class="primary" type="submit">Salvar cocô</button></form>
+        <div class="section-title"><h3>Histórico diário</h3><button class="text-danger" data-clear="diapers">Limpar</button></div><div id="diaper-history" class="history"></div>
+      </section>
+
+      <section class="page" id="remedios">
+        <div class="section-intro"><span class="section-emoji">💊</span><div><h2>Remédios</h2><p>Horários organizados com carinho.</p></div></div>
+        <div id="med-alert" class="alert hidden">A próxima dose está chegando!</div>
+        <form class="card form-card" id="med-form"><label>Nome do remédio<input type="text" id="med-name" maxlength="50" placeholder="Ex: Vitamina D" required></label><label>Horário em que foi dado<input type="time" id="med-time" required></label><fieldset><legend>Intervalo</legend><div class="segmented"><label><input type="radio" name="medInterval" value="6"><span>6 em 6h</span></label><label><input type="radio" name="medInterval" value="8" checked><span>8 em 8h</span></label><label><input type="radio" name="medInterval" value="12"><span>12 em 12h</span></label></div></fieldset><button class="primary" type="submit">Salvar dose</button></form>
+        <div class="next-card pink-card"><p>PRÓXIMA DOSE</p><strong id="med-next">—</strong><span id="med-next-name">Nenhum remédio cadastrado</span></div>
+        <div class="section-title"><h3>Histórico</h3><button class="text-danger" data-clear="medicines">Limpar</button></div><div id="med-history" class="history"></div>
+      </section>
+
+      <section class="page" id="perfil">
+        <div class="section-intro"><span class="section-emoji">👶</span><div><h2>Perfil do bebê</h2><p>As pequenas grandes conquistas.</p></div></div>
+        <form class="card form-card" id="profile-form"><label>Nome do bebê<input type="text" id="baby-name" maxlength="40" placeholder="Nome"></label><label>Data de nascimento<input type="date" id="baby-birth"></label><div class="two-cols"><label>Peso atual (kg)<input type="number" id="baby-weight" min="0" step="0.01" placeholder="3,50"></label><label>Tamanho (cm)<input type="number" id="baby-height" min="0" step="0.1" placeholder="52"></label></div><button class="primary" type="submit">Salvar perfil</button></form>
+        <div class="section-title"><h3>Crescimento</h3></div>
+        <form class="card inline-form" id="growth-form"><input type="date" id="growth-date" aria-label="Data" required><input type="number" id="growth-weight" min="0" step="0.01" placeholder="Peso kg" aria-label="Peso" required><input type="number" id="growth-height" min="0" step="0.1" placeholder="Altura cm" aria-label="Altura" required><button type="submit" aria-label="Adicionar">+</button></form>
+        <div class="growth-charts">
+          <div class="card chart-card"><div class="chart-heading"><span>⚖️</span><div><h3>Crescimento do peso</h3><small>Evolução em quilogramas</small></div></div><canvas id="weight-chart" height="190"></canvas></div>
+          <div class="card chart-card"><div class="chart-heading"><span>📏</span><div><h3>Crescimento do tamanho</h3><small>Evolução em centímetros</small></div></div><canvas id="height-chart" height="190"></canvas></div>
+        </div>
+        <div class="table-wrap"><table><thead><tr><th>Data</th><th>Peso</th><th>Tamanho</th><th>Comparação</th><th></th></tr></thead><tbody id="growth-table"></tbody></table></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <button class="active" data-go="inicio"><span>⌂</span><small>Início</small></button><button data-go="mamadas"><span>🍼</span><small>Mamadas</small></button><button data-go="leite"><span>🤱</span><small>Leite</small></button><button data-go="coco"><span>💩</span><small>Cocô</small></button><button data-go="remedios"><span>💊</span><small>Remédios</small></button><button data-go="perfil"><span>👶</span><small>Perfil</small></button>
+    </nav>
+    <button id="install-app" class="install-app hidden" type="button">📲 Instalar app</button>
+    <div id="toast" class="toast" role="status"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

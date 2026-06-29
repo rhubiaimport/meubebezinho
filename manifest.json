@@ -1,0 +1,41 @@
+{
+  "name": "Meu Bebê",
+  "short_name": "Meu Bebê",
+  "description": "Aplicativo simples para mães acompanharem a rotina do bebê.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eaf7ff",
+  "theme_color": "#eaf7ff",
+  "categories": ["health", "lifestyle", "productivity"],
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Mamadas",
+      "short_name": "Mamadas",
+      "description": "Registrar e acompanhar mamadas",
+      "url": "./index.html#mamadas"
+    },
+    {
+      "name": "Fraldinhas",
+      "short_name": "Fraldas",
+      "description": "Registrar cocô e xixi",
+      "url": "./index.html#coco"
+    }
+  ]
+}
